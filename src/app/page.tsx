@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { CalendarDays, Landmark, User, HeartHandshake, Flame, HandHeart } from "lucide-react";
 
 const buttons = [
   {
@@ -9,80 +10,42 @@ const buttons = [
     zh: "今日活动",
     en: "Today's Activities",
     href: "/activities",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <rect x="3" y="4" width="18" height="18" rx="2" />
-        <line x1="3" y1="9" x2="21" y2="9" />
-        <line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="7" y1="14" x2="9" y2="14" />
-        <line x1="12" y1="14" x2="14" y2="14" />
-        <line x1="17" y1="14" x2="17" y2="14" />
-      </svg>
-    ),
+    icon: <CalendarDays size={40} strokeWidth={1.5} />,
   },
   {
     id: "about",
     zh: "禅堂介绍",
     en: "About Us",
     href: "/about",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <path d="M3 12L12 3l9 9" />
-        <path d="M9 21V12h6v9" />
-        <path d="M3 12h18" />
-      </svg>
-    ),
+    icon: <Landmark size={40} strokeWidth={1.5} />,
   },
   {
     id: "classes",
     zh: "课程报名",
     en: "Classes",
     href: "/classes",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <circle cx="12" cy="7" r="4" />
-        <path d="M4 21v-2a8 8 0 0116 0v2" />
-      </svg>
-    ),
+    icon: <User size={40} strokeWidth={1.5} />,
   },
   {
     id: "consultation",
     zh: "咨询与加持",
     en: "Consultation",
     href: "/consultation",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <path d="M12 21C12 21 4 13.5 4 8.5a8 8 0 0116 0c0 5-8 12.5-8 12.5z" />
-        <circle cx="12" cy="8.5" r="2.5" fill="currentColor" />
-      </svg>
-    ),
+    icon: <HeartHandshake size={36} strokeWidth={1.5} />,
   },
   {
     id: "offering",
     zh: "点灯供养",
     en: "Light Offering",
     href: "/offering",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <path d="M12 2c0 0-3 3-3 6a3 3 0 006 0c0-3-3-6-3-6z" />
-        <rect x="9" y="13" width="6" height="8" rx="1" />
-        <line x1="7" y1="21" x2="17" y2="21" />
-      </svg>
-    ),
+    icon: <Flame size={36} strokeWidth={1.5} />,
   },
   {
     id: "blessings",
     zh: "祈福与回向",
     en: "Blessings",
     href: "/blessings",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-10 h-10">
-        <path d="M4 14c0 0 1-1 4-1s5 2 8 2 4-1 4-1" />
-        <path d="M4 10c0 0 1-1 4-1s5 2 8 2 4-1 4-1" />
-        <path d="M12 3L8 7h8l-4-4z" />
-      </svg>
-    ),
+    icon: <HandHeart size={36} strokeWidth={1.5} />,
   },
 ];
 
@@ -90,7 +53,6 @@ export default function Home() {
   const router = useRouter();
   const [lang, setLang] = useState<"zh" | "en">("zh");
 
-  // Auto-return to home after 60 seconds of inactivity
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     const reset = () => {
@@ -113,7 +75,6 @@ export default function Home() {
     <main
       style={{ backgroundColor: "#F5F0E8", minHeight: "100vh", display: "flex", flexDirection: "column" }}
     >
-      {/* Header */}
       <header
         style={{
           backgroundColor: "#F5F0E8",
@@ -133,7 +94,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Language Toggle */}
         <div
           style={{
             display: "flex",
@@ -175,7 +135,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Welcome text */}
       <div style={{ textAlign: "center", padding: "24px 32px 8px" }}>
         <p style={{ fontSize: 18, color: "#6B4C35", margin: 0 }}>
           {lang === "zh"
@@ -184,7 +143,6 @@ export default function Home() {
         </p>
       </div>
 
-      {/* 6-Button Grid */}
       <section
         style={{
           flex: 1,
@@ -223,7 +181,6 @@ export default function Home() {
               (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
             }}
           >
-            {/* Icon circle */}
             <div
               style={{
                 width: 72,
@@ -238,7 +195,6 @@ export default function Home() {
             >
               {btn.icon}
             </div>
-            {/* Labels */}
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 22, fontWeight: 700, color: "#2C1810" }}>
                 {btn.zh}
@@ -251,7 +207,6 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Footer */}
       <footer
         style={{
           backgroundColor: "#2C1810",
